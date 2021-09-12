@@ -1,0 +1,116 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+</head>
+<body>
+
+
+    <div>
+        <h1 id='timer'>00:00.00</h1>
+        <button onclick="startCounting()" style="width:120px;height:50px;font-size:30px;">山</button>
+    </div>
+    <hr>
+     <div>
+        <h1 id='timer2' >00:00.00</h1>
+        <button onclick="startCounting2()" style="width:120px;height:50px;font-size:30px;">中</button>
+    </div>
+    <hr>
+    <div>
+        <h1 id='timer3' >00:00.00</h1>
+        <button onclick="startCounting3()" style="width:120px;height:50px;font-size:30px;">武</button>
+    </div>
+    <hr>
+
+
+    <script type="text/javascript">
+        var onCount = false;
+        var onCount2 = false;
+        var onCount3 = false;
+        var totalSeconds = 0;
+        var totalSeconds2 = 0;
+        var totalSeconds3 = 0;
+        var timer = document.getElementById("timer");
+        var timer2 = document.getElementById("timer2");
+        var timer3 = document.getElementById("timer3");
+
+        function startCounting()
+        {
+            if (onCount == false)
+            {
+                timer.innerHTML = '00:00';
+                totalSeconds = 0;
+                onCount = true;
+                t1 = setInterval(setTime, 10);
+            } else {
+                onCount = false;
+                clearInterval(t1);
+            }
+        }
+
+        function startCounting2()
+        {
+            if (onCount2 == false)
+            {
+                timer2.innerHTML = '00:00';
+                totalSeconds2 = 0;
+                onCount2 = true;
+                t2 = setInterval(setTime2, 10);
+            } else {
+                onCount2 = false;
+                clearInterval(t2);
+            }
+        }
+
+        function startCounting3()
+        {
+            if (onCount3 == false)
+            {
+                timer3.innerHTML = '00:00';
+                totalSeconds3 = 0;
+                onCount3 = true;
+                t3 = setInterval(setTime3, 10);
+            } else {
+                onCount3 = false;
+                clearInterval(t3);
+            }
+        }
+
+
+            function setTime()
+            {
+                if (onCount) ++totalSeconds;
+                // timer.innerHTML = pad(parseInt(totalSeconds/360000)) + ':' + pad(parseInt(totalSeconds/6000)%60) + ':' + pad(parseInt(totalSeconds/100)%60) + '.' + pad(totalSeconds%100);
+                timer.innerHTML = pad(parseInt(totalSeconds/6000)%60) + ':' + pad(parseInt(totalSeconds/100)%60) + '.' + pad(parseInt(totalSeconds/1)%100)
+
+            }
+
+            function setTime2()
+            {
+                if (onCount2) ++totalSeconds2;
+                timer2.innerHTML = pad(parseInt(totalSeconds2/6000)%60) + ':' + pad(parseInt(totalSeconds2/100)%60) + '.' + pad(parseInt(totalSeconds2/1)%100)
+
+            }
+
+            function setTime3()
+            {
+                if (onCount3) ++totalSeconds3;
+                timer3.innerHTML = pad(parseInt(totalSeconds3/6000)%60) + ':' + pad(parseInt(totalSeconds3/100)%60) + '.' + pad(parseInt(totalSeconds3/1)%100)
+
+            }
+
+
+
+            function pad(val)
+            {
+                var valString = val + "";
+                return (valString.length < 2) ? "0" + valString : valString
+            }
+
+
+    </script>
+
+</body>
+
+</html>
